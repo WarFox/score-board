@@ -1,0 +1,42 @@
+
+<form data-ng-submit="addScore(newScore)" data-ng-init="init()">
+<table class="table table-condensed table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Round</th>
+      <th data-ng-repeat="player in players">
+        {{player}}
+      </th>
+      <th>+</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="round in rounds track by $index">
+      <td>{{$index + 1}}</td>
+      <td data-ng-repeat="player in players">
+        {{round.scores[player]}}
+      </td>
+      <td><a data-ng-click="removeScore($index)"><i class="glyphicon glyphicon-remove"></i></a></td>
+    </tr>
+    <tr>
+      <td><button type="submit" class="btn btn-default btn-xs">Enter Score</button></td>
+      <td data-ng-repeat="player in players">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <input type="checkbox">
+        </span>
+        <input type="number" data-ng-model="newScore[player]" data-integer value="0" class="form-control" size="5"/>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total:</td>
+      <td data-ng-repeat="player in players">
+        {{totals[player]}}
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</form>
