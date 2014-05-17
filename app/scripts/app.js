@@ -1,8 +1,8 @@
-define(["angular"], function (angular) {
+define(["angular", "common"], function (angular) {
 
 	'use strict';
 
-	var module = angular.module('score-app', [ 'ngCookies','ngResource','ngSanitize','ngRoute']);
+	var module = angular.module('score-app', [ 'ngCookies','ngResource','ngSanitize','ngRoute', 'directives.integer']);
 
 	module.config(function ($routeProvider) {
 	    $routeProvider
@@ -13,17 +13,6 @@ define(["angular"], function (angular) {
 	      .otherwise({
 	        redirectTo: '/'
 	      });
-	});
-
-	module.directive('integer', function () {
-	  return {
-	    require: 'ngModel',
-	    link: function (scope, ele, attr, ctrl) {
-	      ctrl.$parsers.unshift(function (viewValue) {
-	        return parseInt(viewValue);
-	      });
-	    }
-	  };
 	});
 
 	module.controller('MainCtrl', function ($scope) {
