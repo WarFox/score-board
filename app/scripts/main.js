@@ -5,7 +5,7 @@
     requirejs.config({
         // Packages = top-level folders; loads a contained file named "main.js"
         baseUrl: "scripts",
-        packages: ["common", "score"],
+        packages: ["common", "game", "score"],
         shim: {
             "jquery": { "exports": "$" },
             "angular": {
